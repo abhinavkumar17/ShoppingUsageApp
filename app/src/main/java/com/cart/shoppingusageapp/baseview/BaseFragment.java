@@ -8,6 +8,8 @@ import com.cart.shoppingusageapp.di.application.ApplicationComponent;
 import com.cart.shoppingusageapp.di.presentation.PresentationComponent;
 import com.cart.shoppingusageapp.di.presentation.PresentationModule;
 
+import java.util.Objects;
+
 public abstract class BaseFragment extends Fragment {
 
     private boolean mIsInjectorUsed;
@@ -24,6 +26,6 @@ public abstract class BaseFragment extends Fragment {
     }
 
     private ApplicationComponent getApplicationComponent() {
-        return ((MyApplication) getActivity().getApplication()).getApplicationComponent();
+        return ((MyApplication) Objects.requireNonNull(getActivity()).getApplication()).getApplicationComponent();
     }
 }

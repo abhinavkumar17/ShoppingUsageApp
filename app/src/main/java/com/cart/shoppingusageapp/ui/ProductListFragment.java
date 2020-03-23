@@ -45,6 +45,7 @@ public class ProductListFragment extends BaseFragment implements ProductListView
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        getPresentationComponent().inject(this);
         mProductListView = mViewFactory.newInstance(ProductListView.class, container);
         mProductListViewModel = ViewModelProviders.of(this, mViewModelProviderFactory).get(ProductListViewModel.class);
         return mProductListView.getRootView();

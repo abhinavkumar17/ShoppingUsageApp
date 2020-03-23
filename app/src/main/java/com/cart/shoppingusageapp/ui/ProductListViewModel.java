@@ -24,7 +24,7 @@ public class ProductListViewModel extends ViewModel implements FetchProductListU
     private Set<Listener> mListeners = new HashSet<>();
 
     @Inject
-    ProductListViewModel(FetchProductListUseCase fetchProductListUseCase) {
+    public ProductListViewModel(FetchProductListUseCase fetchProductListUseCase) {
         mFetchProductListUseCase = fetchProductListUseCase;
     }
 

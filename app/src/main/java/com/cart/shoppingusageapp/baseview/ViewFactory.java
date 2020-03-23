@@ -17,9 +17,8 @@ public class ViewFactory {
     private ImageLoader mImageLoader;
 
     @Inject
-    public ViewFactory(LayoutInflater layoutInflater, ImageLoader imageLoader) {
+    public ViewFactory(LayoutInflater layoutInflater) {
         mLayoutInflater = layoutInflater;
-        mImageLoader = imageLoader;
     }
 
     /**

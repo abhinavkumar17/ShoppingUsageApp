@@ -6,6 +6,8 @@ import com.cart.shoppingusageapp.repository.ShoppingRepository;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.observers.DisposableSingleObserver;
 
 public class FetchProductListUseCase extends BaseObservable<FetchProductListUseCase.Listener> {
@@ -17,10 +19,9 @@ public class FetchProductListUseCase extends BaseObservable<FetchProductListUseC
         void onFetchProductFailAndNotify();
     }
 
-    ShoppingRepository mShoppingRepository;
 
-    public FetchProductListUseCase(ShoppingRepository mShoppingRepository) {
-        this.mShoppingRepository = mShoppingRepository;
+    public FetchProductListUseCase() {
+
     }
 
 
