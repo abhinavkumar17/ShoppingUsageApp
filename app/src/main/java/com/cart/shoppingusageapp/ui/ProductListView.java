@@ -1,7 +1,7 @@
-package com.cart.shoppingusageapp.baseview.ui;
+package com.cart.shoppingusageapp.ui;
 
 import com.cart.shoppingusageapp.baseview.ObservableView;
-import com.cart.shoppingusageapp.baseview.model.Product;
+import com.cart.shoppingusageapp.model.Product;
 
 import java.util.List;
 
