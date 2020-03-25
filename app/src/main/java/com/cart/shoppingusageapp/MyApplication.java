@@ -6,6 +6,7 @@ import com.cart.shoppingusageapp.di.application.ApplicationComponent;
 import com.cart.shoppingusageapp.di.application.ApplicationModule;
 import com.cart.shoppingusageapp.di.application.DaggerApplicationComponent;
 
+
 public class MyApplication extends Application {
 
     private ApplicationComponent mApplicationComponent;

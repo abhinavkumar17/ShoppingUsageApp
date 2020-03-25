@@ -3,6 +3,7 @@ package com.cart.shoppingusageapp.ui;
 import androidx.lifecycle.ViewModel;
 
 import com.cart.shoppingusageapp.model.Product;
+import com.cart.shoppingusageapp.networking.FetchProductListUseCase;
 
 import java.util.HashSet;
 import java.util.List;

@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.cart.shoppingusageapp.baseview.BaseFragment;
 import com.cart.shoppingusageapp.baseview.ViewFactory;
+import com.cart.shoppingusageapp.di.ViewModelProviderFactory;
 import com.cart.shoppingusageapp.model.Product;
 
 import java.util.List;

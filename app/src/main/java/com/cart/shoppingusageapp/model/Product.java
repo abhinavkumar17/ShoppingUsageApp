@@ -14,7 +14,7 @@ public class Product {
 
     @SerializedName("pictures")
     @Expose
-    List<URI> pictures_data;
+    String pictures_data;
 
     @SerializedName("description")
     @Expose
@@ -44,7 +44,7 @@ public class Product {
         return price_currency;
     }
 
-    public List<URI> getPictures_data() {
+    public String getPictures_data() {
         return pictures_data;
     }
 
@@ -74,10 +74,6 @@ public class Product {
 
     public void setPrice_currency(String price_currency) {
         this.price_currency = price_currency;
-    }
-
-    public void setPictures_data(List<URI> pictures_data) {
-        this.pictures_data = pictures_data;
     }
 
     public void setDescription(String description) {

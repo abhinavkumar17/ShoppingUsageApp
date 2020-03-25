@@ -1,6 +1,7 @@
 package com.cart.shoppingusageapp.di.application;
 
 import com.cart.shoppingusageapp.Constants;
+import com.cart.shoppingusageapp.networking.ShoppingService;
 
 import javax.inject.Singleton;
 
@@ -19,5 +20,11 @@ public class NetworkingModule {
                 .baseUrl(Constants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+    }
+
+    @Singleton
+    @Provides
+    ShoppingService getShoppingService(Retrofit retrofit) {
+        return retrofit.create(ShoppingService.class);
     }
 }

@@ -1,6 +1,7 @@
 package com.cart.shoppingusageapp.networking;
 
 import com.cart.shoppingusageapp.model.Product;
+import com.cart.shoppingusageapp.model.ProductSchema;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -8,8 +9,8 @@ import retrofit2.http.Query;
 
 public interface ShoppingService {
 
-    @GET("popular/?{limit}&offset_id=")
-    Call<Product> getProductList(@Query("limit") Integer limit);
+    @GET("popular/?limit=10&offset_id=")
+    Call<ProductSchema> getProductList();
     //https://api.garage.me/api/v1/products/popular/?limit=10&offset_id=
 
    // @GET("/questions/{questionId}?site=stackoverflow&filter=withbody")

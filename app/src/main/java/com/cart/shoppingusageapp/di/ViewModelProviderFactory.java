@@ -1,4 +1,4 @@
-package com.cart.shoppingusageapp.ui;
+package com.cart.shoppingusageapp.di;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;

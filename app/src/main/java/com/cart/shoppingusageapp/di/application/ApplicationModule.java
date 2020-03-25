@@ -2,7 +2,8 @@ package com.cart.shoppingusageapp.di.application;
 
 import android.app.Application;
 
-import com.cart.shoppingusageapp.ui.FetchProductListUseCase;
+import com.cart.shoppingusageapp.networking.FetchProductListUseCase;
+import com.cart.shoppingusageapp.networking.ShoppingService;
 
 import dagger.Module;
 import dagger.Provides;
@@ -16,8 +17,8 @@ public class ApplicationModule {
         mApplication = application;
     }
 
-    @Provides
-    FetchProductListUseCase getFetchQuestionsListUseCase() {
-        return new FetchProductListUseCase();
-    }
+    /*@Provides
+    FetchProductListUseCase getFetchQuestionsListUseCase(ShoppingService shoppingService) {
+        return new FetchProductListUseCase(shoppingService);
+    }*/
 }

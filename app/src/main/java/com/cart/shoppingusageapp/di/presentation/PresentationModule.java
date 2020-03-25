@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
+import com.cart.shoppingusageapp.networking.FetchProductListUseCase;
+import com.cart.shoppingusageapp.networking.ShoppingService;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -37,5 +40,10 @@ public class PresentationModule {
     @Provides
     Context context(Activity activity) {
         return activity;
+    }
+
+    @Provides
+    FetchProductListUseCase getFetchQuestionsListUseCase(ShoppingService shoppingService) {
+        return new FetchProductListUseCase(shoppingService);
     }
 }
