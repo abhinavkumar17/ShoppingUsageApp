@@ -2,7 +2,7 @@ package com.cart.shoppingusageapp.ui;
 
 import androidx.lifecycle.ViewModel;
 
-import com.cart.shoppingusageapp.model.Product;
+import com.cart.shoppingusageapp.model.prod.Object;
 import com.cart.shoppingusageapp.networking.FetchProductListUseCase;
 
 import java.util.HashSet;
@@ -15,7 +15,7 @@ public class ProductListViewModel extends ViewModel implements FetchProductListU
 
     public interface Listener {
 
-        void onFetchProductSecessAndNotify(List<Product> products);
+        void onFetchProductSecessAndNotify(List<Object> products);
 
         void onFetchProductFailAndNotify();
     }
@@ -53,16 +53,16 @@ public class ProductListViewModel extends ViewModel implements FetchProductListU
     }
 
     @Override
-    public void onFetchProductSecessAndNotify(List<Product> products) {
+    public void onFetchProductFailAndNotify() {
         for (Listener listener : mListeners) {
-            listener.onFetchProductSecessAndNotify(products);
+            listener.onFetchProductFailAndNotify();
         }
     }
 
     @Override
-    public void onFetchProductFailAndNotify() {
+    public void onFetchProductSecessAndNotify(List<Object> products) {
         for (Listener listener : mListeners) {
-            listener.onFetchProductFailAndNotify();
+            listener.onFetchProductSecessAndNotify(products);
         }
     }
 }

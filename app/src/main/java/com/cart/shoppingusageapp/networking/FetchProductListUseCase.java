@@ -5,15 +5,10 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import com.cart.shoppingusageapp.baseview.BaseObservable;
-import com.cart.shoppingusageapp.model.Product;
-import com.cart.shoppingusageapp.model.ProductSchema;
-import com.cart.shoppingusageapp.model.Products;
-import com.google.gson.internal.LinkedTreeMap;
+import com.cart.shoppingusageapp.model.prod.Object;
+import com.cart.shoppingusageapp.model.prod.Product;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.inject.Inject;
 
 import io.reactivex.observers.DisposableSingleObserver;
 import retrofit2.Call;
@@ -24,9 +19,12 @@ public class FetchProductListUseCase extends BaseObservable<FetchProductListUseC
 
     public interface Listener {
 
-        void onFetchProductSecessAndNotify(List<Product> products);
+       //void onFetchProductSecessAndNotify(List<Product> products);
 
         void onFetchProductFailAndNotify();
+
+        void onFetchProductSecessAndNotify(List<Object> products);
+
     }
 
     @Nullable
@@ -37,20 +35,43 @@ public class FetchProductListUseCase extends BaseObservable<FetchProductListUseC
         mShoppingService = shoppingService;
     }
 
-    Products products;
-
-    public DisposableSingleObserver<List<Product>> fetchProductList() {
-        mShoppingService.getProductList().enqueue(new Callback<ProductSchema>() {
+    public void fetchProductList() {
+        mShoppingService.getProductList().enqueue(new Callback<Product>() {
             @Override
-            public void onResponse(Call<ProductSchema> call, Response<ProductSchema> response) {
+            public void onResponse(Call<Product> call, Response<Product> response) {
                 Log.d("",""+response.body());
+                for(Listener listener:getListeners()){
+                    listener.onFetchProductSecessAndNotify(response.body().getProducts());
+                }
             }
 
             @Override
-            public void onFailure(Call<ProductSchema> call, Throwable t) {
+            public void onFailure(Call<Product> call, Throwable t) {
                 Log.d("","");
+                for(Listener listener:getListeners()){
+                    listener.onFetchProductFailAndNotify();
+                }
             }
         });
-        return null;
+
+
+
+    /*.enqueue(new Callback<Product>() {
+            @Override
+            public void onResponse(Call<Product> call, Response<Product> response) {
+                Log.d("",""+response.body());
+                for(Listener listener:getListeners()){
+                    listener.onFetchProductSecessAndNotify(response.body().getProducts());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Product> call, Throwable t) {
+                Log.d("","");
+                for(Listener listener:getListeners()){
+                    listener.onFetchProductFailAndNotify();
+                }
+            }
+        });*/
     }
 }

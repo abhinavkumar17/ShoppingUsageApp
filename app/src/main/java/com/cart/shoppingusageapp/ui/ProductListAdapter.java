@@ -9,7 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cart.shoppingusageapp.R;
-import com.cart.shoppingusageapp.model.Product;
+import com.cart.shoppingusageapp.model.prod.Product;
+import com.cart.shoppingusageapp.model.prod.Object;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,14 +24,14 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         void onProductClick(Product product);
     }
 
-    private List<Product> data = new ArrayList<>();
+    private List<Object> data = new ArrayList<>();
     private ProductSelectionListener mProductSelectionListener;
 
     public ProductListAdapter(ProductSelectionListener mProductSelectionListener) {
         this.mProductSelectionListener = mProductSelectionListener;
     }
 
-    public void setProductData(List<Product> data){
+    public void setProductData(List<Object> data){
         this.data= data;
     }
 
@@ -72,25 +73,25 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         @BindView(R.id.wishlist_product_stock)
         TextView producStock;
 
-        private Product product;
+        private Object product;
 
         ProductViewHolder(@NonNull View itemView, final ProductSelectionListener productSelectionListener) {
             super(itemView);
             ButterKnife.bind(this, itemView);
             itemView.setOnClickListener(v -> {
                 if (this.product != null && productSelectionListener != null) {
-                    productSelectionListener.onProductClick(this.product);
+                    //productSelectionListener.onProductClick(this.product);
                 }
             });
 
         }
 
-        void bind(Product product) {
+        void bind(Object product) {
             this.product = product;
-            productName.setText(product.getId());
+            productName.setText(product.getUserId());
             categoryTextView.setText(product.getAddress());
             productPrice.setText(product.getCountry());
-            producOldPrice.setText(product.getPrice_amount());
+            producOldPrice.setText(product.getPriceAmount());
             //producStock.setText(Integer.toString(product.getStock()));
         }
     }

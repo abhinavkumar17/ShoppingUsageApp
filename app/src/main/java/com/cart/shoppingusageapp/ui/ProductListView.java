@@ -1,7 +1,8 @@
 package com.cart.shoppingusageapp.ui;
 
 import com.cart.shoppingusageapp.baseview.ObservableView;
-import com.cart.shoppingusageapp.model.Product;
+import com.cart.shoppingusageapp.model.prod.Product;
+import com.cart.shoppingusageapp.model.prod.Object;
 
 import java.util.List;
 
@@ -13,6 +14,6 @@ public interface ProductListView extends ObservableView<ProductListView.Listener
 
     void showProgressIndication();
     void hideProgressIndication();
-    void bindProductData(List<Product> products);
+    void bindProductData(List<Object> products);
     void setServerError();
 }

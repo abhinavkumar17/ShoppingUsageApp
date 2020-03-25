@@ -11,7 +11,8 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.cart.shoppingusageapp.R;
 import com.cart.shoppingusageapp.baseview.BaseView;
-import com.cart.shoppingusageapp.model.Product;
+import com.cart.shoppingusageapp.model.prod.Product;
+import com.cart.shoppingusageapp.model.prod.Object;
 
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class ProductListViewImpl extends BaseView<ProductListView.Listener>
     }
 
     @Override
-    public void bindProductData(List<Product> products) {
+    public void bindProductData(List<Object> products) {
         mRecyclerView.setVisibility(View.VISIBLE);
         mProductListAdapter.setProductData(products);
     }

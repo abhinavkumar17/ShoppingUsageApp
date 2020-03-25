@@ -14,7 +14,8 @@ import androidx.lifecycle.ViewModelProviders;
 import com.cart.shoppingusageapp.baseview.BaseFragment;
 import com.cart.shoppingusageapp.baseview.ViewFactory;
 import com.cart.shoppingusageapp.di.ViewModelProviderFactory;
-import com.cart.shoppingusageapp.model.Product;
+import com.cart.shoppingusageapp.model.prod.Object;
+import com.cart.shoppingusageapp.model.prod.Product;
 
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class ProductListFragment extends BaseFragment implements ProductListView
 
     private ProductListViewModel mProductListViewModel;
 
-    private List<Product> mProcucts;
+    private List<Object> mProcucts;
 
     public static ProductListFragment newInstance() {
         ProductListFragment fragment = new ProductListFragment();
@@ -83,7 +84,7 @@ public class ProductListFragment extends BaseFragment implements ProductListView
     }
 
     @Override
-    public void onFetchProductSecessAndNotify(List<Product> products) {
+    public void onFetchProductSecessAndNotify(List<Object> products) {
         mProcucts = products;
         mProductListView.hideProgressIndication();
         mProductListView.bindProductData(mProcucts);
