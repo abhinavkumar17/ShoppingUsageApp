@@ -1,4 +1,4 @@
-package com.cart.shoppingusageapp.ui;
+package com.cart.shoppingusageapp.ui.productlist;
 
 import com.cart.shoppingusageapp.baseview.ObservableView;
 import com.cart.shoppingusageapp.model.prod.Product;
@@ -9,7 +9,7 @@ import java.util.List;
 public interface ProductListView extends ObservableView<ProductListView.Listener> {
 
     interface Listener {
-        void onProductItemClick(Product product);
+        void onProductItemClick(Object product);
     }
 
     void showProgressIndication();

@@ -3,99 +3,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/data_container_wrapper"
     android:padding="@dimen/padding_common"
+    android:orientation="horizontal"
     android:layout_margin="@dimen/margin_common"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+       <!-- The user’s userId
+        ● The user’s avatar
+        ● The user’s location
+        ● The item’s price with currency
+        ● The item's first picture-->
 
-        <TextView
-            tools:text="category"
-            android:id="@+id/shoppingd_category"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLines="2" />
+        <ImageView
+            android:id="@+id/img_user_avatar"
+            android:layout_width="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_height="50dp"
+            />
 
-        <TextView
-            tools:text="name"
-            android:id="@+id/shoppingd_product_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/shoppingd_category"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@+id/img_user_avatar"
+            android:paddingLeft="10dp"
+            android:id="@+id/container"
+            android:layout_height="wrap_content">
 
-        <TextView
-            tools:text="price"
-            android:id="@+id/shoppingd_product_price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/shoppingd_product_name"/>
-
-        <TextView
-            tools:text="old price"
-            android:id="@+id/shoppingd_product_old_price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/shoppingd_product_price"/>
-
-        <TextView
-            tools:text="discounted price"
-            android:id="@+id/shoppingd_product_discounted_price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/shoppingd_product_old_price"/>
-
-        <TextView
-            tools:text="stock"
-            android:id="@+id/shoppingd_product_stock"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/shoppingd_product_discounted_price"/>
-
-        <LinearLayout
-            android:id="@+id/cart_layout"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:padding="@dimen/padding_common_big"
-            android:layout_below="@+id/shoppingd_product_stock">
-                <Button
-                    android:id="@+id/add_remove_from_cart_Button"
+                <TextView
+                    tools:text="userid"
+                    android:id="@+id/user_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Add Cart">
-                </Button>
+                    android:maxLines="2" />
 
-                <Button
-                    android:id="@+id/cart_button"
+                <TextView
+                    tools:text="location"
+                    android:id="@+id/location"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Cart">
-                </Button>
-        </LinearLayout>
+                    android:layout_below="@+id/user_id"/>
 
-        <LinearLayout
-            android:id="@+id/wish_layout"
-            android:layout_height="wrap_content"
+                <TextView
+                    tools:text="price"
+                    android:id="@+id/price_currency"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/location"/>
+
+            <TextView
+                tools:text="description"
+                android:id="@+id/product_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/price_currency" />
+        </RelativeLayout>
+
+
+        <ImageView
+            android:layout_below="@+id/container"
+            android:id="@+id/product_img"
             android:layout_width="match_parent"
-            android:padding="@dimen/padding_common_big"
-            android:layout_below="@+id/cart_layout">
-                <Button
-                    android:id="@+id/add_remove_from_wish_Button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Add WishList">
-                </Button>
-
-                <Button
-                    android:id="@+id/wish_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="WishList">
-                </Button>
-        </LinearLayout>
-
+            android:layout_height="200dp"
+            />
 
 </RelativeLayout>
 

@@ -6,8 +6,10 @@ import android.view.ViewGroup;
 import androidx.annotation.Nullable;
 
 import com.cart.shoppingusageapp.ImageLoader;
-import com.cart.shoppingusageapp.ui.ProductListView;
-import com.cart.shoppingusageapp.ui.ProductListViewImpl;
+import com.cart.shoppingusageapp.ui.productdetails.ProductDetailsFragmentImpl;
+import com.cart.shoppingusageapp.ui.productdetails.ProductDetailsView;
+import com.cart.shoppingusageapp.ui.productlist.ProductListView;
+import com.cart.shoppingusageapp.ui.productlist.ProductListViewImpl;
 
 import javax.inject.Inject;
 
@@ -17,8 +19,9 @@ public class ViewFactory {
     private ImageLoader mImageLoader;
 
     @Inject
-    public ViewFactory(LayoutInflater layoutInflater) {
+    public ViewFactory(LayoutInflater layoutInflater, ImageLoader imageLoader) {
         mLayoutInflater = layoutInflater;
+        mImageLoader = imageLoader;
     }
 
     /**
@@ -34,7 +37,9 @@ public class ViewFactory {
         ViewRoot viewMvc;
 
         if (mvcViewClass == ProductListView.class) {
-            viewMvc = new ProductListViewImpl(mLayoutInflater, container);
+            viewMvc = new ProductListViewImpl(mLayoutInflater, container, mImageLoader);
+        }else if (mvcViewClass == ProductDetailsView.class) {
+            viewMvc = new ProductDetailsFragmentImpl(mLayoutInflater, container, mImageLoader);
         }
         else {
             throw new IllegalArgumentException("unsupported MVC view class " + mvcViewClass);

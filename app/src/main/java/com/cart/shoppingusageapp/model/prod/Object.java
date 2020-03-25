@@ -1,11 +1,14 @@
 package com.cart.shoppingusageapp.model.prod;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Object {
+public class Object implements Parcelable {
 
     @SerializedName("price_currency")
     @Expose
@@ -141,6 +144,62 @@ public class Object {
         this.variants = variants;
         this.priceAmount = priceAmount;
     }
+
+    protected Object(Parcel in) {
+        priceCurrency = in.readString();
+        variantSet = in.readInt();
+        createdDate = in.readString();
+        description = in.readString();
+        activeStatus = in.readString();
+        country = in.readString();
+        slug = in.readString();
+        pubDate = in.readString();
+        nationalShippingCost = in.readString();
+        userId = in.readInt();
+        id = in.readInt();
+        handDelivery = in.readByte() != 0;
+        status = in.readString();
+        purchaseViaPaypal = in.readByte() != 0;
+        address = in.readString();
+        priceAmount = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(priceCurrency);
+        dest.writeInt(variantSet);
+        dest.writeString(createdDate);
+        dest.writeString(description);
+        dest.writeString(activeStatus);
+        dest.writeString(country);
+        dest.writeString(slug);
+        dest.writeString(pubDate);
+        dest.writeString(nationalShippingCost);
+        dest.writeInt(userId);
+        dest.writeInt(id);
+        dest.writeByte((byte) (handDelivery ? 1 : 0));
+        dest.writeString(status);
+        dest.writeByte((byte) (purchaseViaPaypal ? 1 : 0));
+        dest.writeString(address);
+        dest.writeString(priceAmount);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Object> CREATOR = new Creator<Object>() {
+        @Override
+        public Object createFromParcel(Parcel in) {
+            return new Object(in);
+        }
+
+        @Override
+        public Object[] newArray(int size) {
+            return new Object[size];
+        }
+    };
 
     public String getPriceCurrency() {
         return priceCurrency;

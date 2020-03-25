@@ -3,52 +3,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/data_container_wrapper"
     android:padding="@dimen/padding_common"
+    android:orientation="horizontal"
     android:layout_margin="@dimen/margin_common"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+       <!-- The user’s userId
+        ● The user’s avatar
+        ● The user’s location
+        ● The item’s price with currency
+        ● The item's first picture-->
 
-        <TextView
-            tools:text="category"
-            android:id="@+id/wishlist_category"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLines="2" />
+        <ImageView
+            android:id="@+id/img_user_avatar"
+            android:layout_width="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_height="50dp"
+            />
 
-        <TextView
-            tools:text="name"
-            android:id="@+id/wishlist_product_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/wishlist_category"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@+id/img_user_avatar"
+            android:paddingLeft="10dp"
+            android:id="@+id/container"
+            android:layout_height="wrap_content">
 
-        <TextView
-            tools:text="price"
-            android:id="@+id/wishlist_product_price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/wishlist_product_name"/>
+                <TextView
+                    tools:text="userid"
+                    android:id="@+id/user_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2" />
 
-        <TextView
-            tools:text="old price"
-            android:id="@+id/wishlist_product_old_price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/wishlist_product_price"/>
+                <TextView
+                    tools:text="location"
+                    android:id="@+id/location"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/user_id"/>
 
-        <TextView
-            tools:text="discounted price"
-            android:id="@+id/wishlist_product_discounted_price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/wishlist_product_old_price"/>
+                <TextView
+                    tools:text="price"
+                    android:id="@+id/price_currency"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/location"/>
+        </RelativeLayout>
 
-        <TextView
-            tools:text="stock"
-            android:id="@+id/wishlist_product_stock"
+
+        <ImageView
+            android:layout_below="@+id/container"
+            android:id="@+id/product_img"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/wishlist_product_discounted_price"/>
+            android:layout_height="200dp"
+            />
 
 </RelativeLayout>
 

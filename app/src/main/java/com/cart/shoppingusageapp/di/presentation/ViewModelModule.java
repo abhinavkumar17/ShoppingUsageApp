@@ -3,7 +3,7 @@ package com.cart.shoppingusageapp.di.presentation;
 import androidx.lifecycle.ViewModel;
 
 import com.cart.shoppingusageapp.networking.FetchProductListUseCase;
-import com.cart.shoppingusageapp.ui.ProductListViewModel;
+import com.cart.shoppingusageapp.ui.productlist.ProductListViewModel;
 import com.cart.shoppingusageapp.di.ViewModelProviderFactory;
 
 import java.lang.annotation.ElementType;

@@ -1,4 +1,4 @@
-package com.cart.shoppingusageapp.ui;
+package com.cart.shoppingusageapp.ui.productlist;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,11 +11,13 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.cart.shoppingusageapp.R;
 import com.cart.shoppingusageapp.baseview.BaseFragment;
 import com.cart.shoppingusageapp.baseview.ViewFactory;
 import com.cart.shoppingusageapp.di.ViewModelProviderFactory;
 import com.cart.shoppingusageapp.model.prod.Object;
 import com.cart.shoppingusageapp.model.prod.Product;
+import com.cart.shoppingusageapp.ui.productdetails.ProductDetailsFragment;
 
 import java.util.List;
 
@@ -75,15 +77,6 @@ public class ProductListFragment extends BaseFragment implements ProductListView
     }
 
     @Override
-    public void onProductItemClick(Product product) {
-        FragmentManager fm = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fm.beginTransaction();
-       // fragmentTransaction.replace(R.id.screenContainer, ProductDetailsFragment.newInstance(product));
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
-    }
-
-    @Override
     public void onFetchProductSecessAndNotify(List<Object> products) {
         mProcucts = products;
         mProductListView.hideProgressIndication();
@@ -94,5 +87,14 @@ public class ProductListFragment extends BaseFragment implements ProductListView
     public void onFetchProductFailAndNotify() {
         mProductListView.hideProgressIndication();
         mProductListView.setServerError();
+    }
+
+    @Override
+    public void onProductItemClick(Object product) {
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        fragmentTransaction.replace(R.id.screenContainer, ProductDetailsFragment.newInstance(product));
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 }

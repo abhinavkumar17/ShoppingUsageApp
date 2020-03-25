@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.cart.shoppingusageapp.ui.ProductListFragment;
+import com.cart.shoppingusageapp.ui.productlist.ProductListFragment;
 
 public class MainActivity extends AppCompatActivity {
 

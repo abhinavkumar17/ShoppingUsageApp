@@ -1,4 +1,4 @@
-package com.cart.shoppingusageapp.ui;
+package com.cart.shoppingusageapp.ui.productlist;
 
 import androidx.lifecycle.ViewModel;
 

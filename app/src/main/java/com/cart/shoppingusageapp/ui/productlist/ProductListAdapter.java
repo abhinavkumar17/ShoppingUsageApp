@@ -1,15 +1,16 @@
-package com.cart.shoppingusageapp.ui;
+package com.cart.shoppingusageapp.ui.productlist;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.cart.shoppingusageapp.ImageLoader;
 import com.cart.shoppingusageapp.R;
-import com.cart.shoppingusageapp.model.prod.Product;
 import com.cart.shoppingusageapp.model.prod.Object;
 
 import java.util.ArrayList;
@@ -18,21 +19,23 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.ProductViewHolder>{
+public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.ProductViewHolder> {
 
-    public interface ProductSelectionListener{
-        void onProductClick(Product product);
+    public interface ProductSelectionListener {
+        void onProductClick(Object product);
     }
 
     private List<Object> data = new ArrayList<>();
     private ProductSelectionListener mProductSelectionListener;
+    private final ImageLoader mImageLoader;
 
-    public ProductListAdapter(ProductSelectionListener mProductSelectionListener) {
+    public ProductListAdapter(ProductSelectionListener mProductSelectionListener, ImageLoader imageLoader) {
         this.mProductSelectionListener = mProductSelectionListener;
+        mImageLoader = imageLoader;
     }
 
-    public void setProductData(List<Object> data){
-        this.data= data;
+    public void setProductData(List<Object> data) {
+        this.data = data;
     }
 
     @NonNull
@@ -53,25 +56,22 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     }
 
 
-    static final class ProductViewHolder extends RecyclerView.ViewHolder {
+    final class ProductViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.wishlist_category)
-        TextView categoryTextView;
+        @BindView(R.id.img_user_avatar)
+        ImageView avatar;
 
-        @BindView(R.id.wishlist_product_price)
-        TextView productPrice;
+        @BindView(R.id.product_img)
+        ImageView product_img;
 
-        @BindView(R.id.wishlist_product_name)
-        TextView productName;
+        @BindView(R.id.user_id)
+        TextView user_id;
 
-        @BindView(R.id.wishlist_product_old_price)
-        TextView producOldPrice;
+        @BindView(R.id.location)
+        TextView location;
 
-        @BindView(R.id.wishlist_product_discounted_price)
-        TextView producDiscountedPrice;
-
-        @BindView(R.id.wishlist_product_stock)
-        TextView producStock;
+        @BindView(R.id.price_currency)
+        TextView price;
 
         private Object product;
 
@@ -80,7 +80,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
             ButterKnife.bind(this, itemView);
             itemView.setOnClickListener(v -> {
                 if (this.product != null && productSelectionListener != null) {
-                    //productSelectionListener.onProductClick(this.product);
+                    productSelectionListener.onProductClick(product);
                 }
             });
 
@@ -88,11 +88,11 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
         void bind(Object product) {
             this.product = product;
-            productName.setText(product.getUserId());
-            categoryTextView.setText(product.getAddress());
-            productPrice.setText(product.getCountry());
-            producOldPrice.setText(product.getPriceAmount());
-            //producStock.setText(Integer.toString(product.getStock()));
+            mImageLoader.loadImage("https://pictures.depop.com/b0/2513227/233594315_vQnPrfpKJX/P1.jpg", avatar);
+            user_id.setText(String.format(Integer.toString(product.getId())));
+            location.setText(product.getAddress());
+            price.setText(product.getPriceAmount() + " " + product.getPriceCurrency());
+            mImageLoader.loadImage(product.getPicturesData().get(0).getFormats().getP0().getUrl(), product_img);
         }
     }
 }
