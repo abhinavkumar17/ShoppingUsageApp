@@ -92,7 +92,7 @@ public class ProductListFragment extends BaseFragment implements ProductListView
     public void onProductItemClick(Object product) {
         FragmentManager fm = getFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
-        fragmentTransaction.replace(R.id.screenContainer, ProductDetailsFragment.newInstance(product));
+        fragmentTransaction.add(R.id.screenContainer, ProductDetailsFragment.newInstance(product));
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }

@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import com.cart.shoppingusageapp.ImageLoader;
 import com.cart.shoppingusageapp.R;
 import com.cart.shoppingusageapp.baseview.BaseView;
-import com.cart.shoppingusageapp.model.prod.Product;
 import com.cart.shoppingusageapp.model.prod.Object;
 
 import java.util.List;
@@ -26,11 +25,11 @@ public class ProductListViewImpl extends BaseView<ProductListView.Listener>
     private final TextView mEmplyListErrorView;
     private final ProductListAdapter mProductListAdapter;
 
-    public ProductListViewImpl(LayoutInflater inflater, ViewGroup container, ImageLoader imageLoader){
+    public ProductListViewImpl(LayoutInflater inflater, ViewGroup container, ImageLoader imageLoader) {
         setRootView(inflater.inflate(R.layout.fragment_product_list, container, false));
 
         mRecyclerView = findViewById(R.id.shopping_list_recycler_view);
-        mProductListAdapter = new ProductListAdapter(this,imageLoader);
+        mProductListAdapter = new ProductListAdapter(this, imageLoader);
         mRecyclerView.setAdapter(mProductListAdapter);
         mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(NO_OF_COLUMNS, StaggeredGridLayoutManager.VERTICAL));
 
@@ -63,7 +62,7 @@ public class ProductListViewImpl extends BaseView<ProductListView.Listener>
 
     @Override
     public void onProductClick(Object product) {
-        for(Listener listener:getListeners()){
+        for (Listener listener : getListeners()) {
             listener.onProductItemClick(product);
         }
     }

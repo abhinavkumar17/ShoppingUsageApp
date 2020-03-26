@@ -20,7 +20,8 @@ public class ImageLoader {
     }
 
     public void loadImage(String uri, ImageView target) {
-        Glide.with(mActivity).load(uri).apply(mDefaultRequestOptions).into(target);
+        Glide.with(mActivity).load(uri)
+                .apply(mDefaultRequestOptions).into(target);
     }
 
 }

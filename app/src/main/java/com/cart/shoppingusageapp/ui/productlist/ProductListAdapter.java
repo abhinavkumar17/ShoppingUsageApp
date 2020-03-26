@@ -19,6 +19,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.cart.shoppingusageapp.Constants.PLACEHOLDER_URL;
+
 public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.ProductViewHolder> {
 
     public interface ProductSelectionListener {
@@ -88,10 +90,10 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
         void bind(Object product) {
             this.product = product;
-            mImageLoader.loadImage("https://pictures.depop.com/b0/2513227/233594315_vQnPrfpKJX/P1.jpg", avatar);
-            user_id.setText(String.format(Integer.toString(product.getId())));
+            mImageLoader.loadImage(PLACEHOLDER_URL, avatar);
+            user_id.setText(Integer.toString(product.getId()));
             location.setText(product.getAddress());
-            price.setText(product.getPriceAmount() + " " + product.getPriceCurrency());
+            price.setText(product.getPriceCurrency().concat(" ").concat( product.getPriceAmount()));
             mImageLoader.loadImage(product.getPicturesData().get(0).getFormats().getP0().getUrl(), product_img);
         }
     }

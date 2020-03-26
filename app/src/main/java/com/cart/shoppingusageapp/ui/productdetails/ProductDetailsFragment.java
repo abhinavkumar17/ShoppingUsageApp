@@ -44,7 +44,6 @@ public class ProductDetailsFragment extends BaseFragment implements ProductDetai
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         getPresentationComponent().inject(this);
         mProductDetailsView = mViewFactory.newInstance(ProductDetailsView.class, container);
-        // mProductDetailsViewModel = ViewModelProviders.of(this, mViewModelProviderFactory).get(ProductDetailsViewModel.class);
         return mProductDetailsView.getRootView();
     }
 
