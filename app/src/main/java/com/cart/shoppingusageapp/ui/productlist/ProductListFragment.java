@@ -16,7 +16,6 @@ import com.cart.shoppingusageapp.baseview.BaseFragment;
 import com.cart.shoppingusageapp.baseview.ViewFactory;
 import com.cart.shoppingusageapp.di.ViewModelProviderFactory;
 import com.cart.shoppingusageapp.model.prod.Object;
-import com.cart.shoppingusageapp.model.prod.Product;
 import com.cart.shoppingusageapp.ui.productdetails.ProductDetailsFragment;
 
 import java.util.List;
