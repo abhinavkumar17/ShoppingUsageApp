@@ -13,7 +13,6 @@ import org.mockito.junit.MockitoRule;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.verify;
 
 public class ProductListFragmentTest {

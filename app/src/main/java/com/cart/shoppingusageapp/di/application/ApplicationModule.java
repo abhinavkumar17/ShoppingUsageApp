@@ -2,11 +2,7 @@ package com.cart.shoppingusageapp.di.application;
 
 import android.app.Application;
 
-import com.cart.shoppingusageapp.networking.FetchProductListUseCase;
-import com.cart.shoppingusageapp.networking.ShoppingService;
-
 import dagger.Module;
-import dagger.Provides;
 
 @Module
 public class ApplicationModule {
@@ -18,7 +14,7 @@ public class ApplicationModule {
     }
 
     /*@Provides
-    FetchProductListUseCase getFetchQuestionsListUseCase(ShoppingService shoppingService) {
-        return new FetchProductListUseCase(shoppingService);
+    FetchProductListRepository getFetchQuestionsListUseCase(ShoppingService shoppingService) {
+        return new FetchProductListRepository(shoppingService);
     }*/
 }

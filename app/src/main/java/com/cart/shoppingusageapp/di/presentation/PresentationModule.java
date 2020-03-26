@@ -8,7 +8,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
 import com.cart.shoppingusageapp.ImageLoader;
-import com.cart.shoppingusageapp.networking.FetchProductListUseCase;
+import com.cart.shoppingusageapp.networking.FetchProductListRepository;
 import com.cart.shoppingusageapp.networking.ShoppingService;
 
 import dagger.Module;
@@ -49,7 +49,7 @@ public class PresentationModule {
     }
 
     @Provides
-    FetchProductListUseCase getFetchQuestionsListUseCase(ShoppingService shoppingService) {
-        return new FetchProductListUseCase(shoppingService);
+    FetchProductListRepository getFetchQuestionsListUseCase(ShoppingService shoppingService) {
+        return new FetchProductListRepository(shoppingService);
     }
 }

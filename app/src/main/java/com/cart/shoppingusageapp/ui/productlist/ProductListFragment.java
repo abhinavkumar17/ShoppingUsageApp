@@ -90,6 +90,7 @@ public class ProductListFragment extends BaseFragment implements ProductListView
 
     @Override
     public void onProductItemClick(Object product) {
+        //To do - Need refactoring. Need to ceate seperate module/class for all Fragment Transcations and backstack
         FragmentManager fm = getFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.add(R.id.screenContainer, ProductDetailsFragment.newInstance(product));

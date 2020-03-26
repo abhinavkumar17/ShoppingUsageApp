@@ -2,7 +2,7 @@ package com.cart.shoppingusageapp.di.presentation;
 
 import androidx.lifecycle.ViewModel;
 
-import com.cart.shoppingusageapp.networking.FetchProductListUseCase;
+import com.cart.shoppingusageapp.networking.FetchProductListRepository;
 import com.cart.shoppingusageapp.ui.productlist.ProductListViewModel;
 import com.cart.shoppingusageapp.di.ViewModelProviderFactory;
 
@@ -37,8 +37,8 @@ public class ViewModelModule {
     @Provides
     @IntoMap
     @ViewModelKey(ProductListViewModel.class)
-    ViewModel questionDetailsViewModel(FetchProductListUseCase fetchProductListUseCase) {
-        return new ProductListViewModel(fetchProductListUseCase);
+    ViewModel questionDetailsViewModel(FetchProductListRepository fetchProductListRepository) {
+        return new ProductListViewModel(fetchProductListRepository);
     }
 }
 

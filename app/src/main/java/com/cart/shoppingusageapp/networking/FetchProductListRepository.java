@@ -12,7 +12,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class FetchProductListUseCase extends BaseObservable<FetchProductListUseCase.Listener> {
+public class FetchProductListRepository extends BaseObservable<FetchProductListRepository.Listener> {
 
     public interface Listener {
 
@@ -26,7 +26,7 @@ public class FetchProductListUseCase extends BaseObservable<FetchProductListUseC
     Call<Product> mCall;
     private ShoppingService mShoppingService;
 
-    public FetchProductListUseCase(ShoppingService shoppingService) {
+    public FetchProductListRepository(ShoppingService shoppingService) {
         mShoppingService = shoppingService;
     }
 

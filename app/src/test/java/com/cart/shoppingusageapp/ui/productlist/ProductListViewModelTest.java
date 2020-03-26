@@ -1,7 +1,7 @@
 package com.cart.shoppingusageapp.ui.productlist;
 
 import com.cart.shoppingusageapp.model.prod.Object;
-import com.cart.shoppingusageapp.networking.FetchProductListUseCase;
+import com.cart.shoppingusageapp.networking.FetchProductListRepository;
 import com.cart.shoppingusageapp.testdata.ProductTestData;
 
 import org.junit.Before;
@@ -13,7 +13,6 @@ import org.mockito.junit.MockitoRule;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.verify;
 
 public class ProductListViewModelTest {
@@ -29,14 +28,14 @@ public class ProductListViewModelTest {
     ProductListViewModel.Listener mListener2;
 
     @Mock
-    private FetchProductListUseCase mFetchProductListUseCase;
+    private FetchProductListRepository mFetchProductListRepository;
 
     ProductListViewModel SUT;
 
 
     @Before
     public void setUp() throws Exception {
-        SUT = new ProductListViewModel(mFetchProductListUseCase);
+        SUT = new ProductListViewModel(mFetchProductListRepository);
         SUT.registerListener(mListener1);
         SUT.registerListener(mListener2);
     }
@@ -65,6 +64,6 @@ public class ProductListViewModelTest {
         // Act
         SUT.fetchProductList();
         // Assert
-        verify(mFetchProductListUseCase).fetchProductList();
+        verify(mFetchProductListRepository).fetchProductList();
     }
 }

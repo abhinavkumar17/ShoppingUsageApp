@@ -3,7 +3,7 @@ package com.cart.shoppingusageapp.ui.productlist;
 import androidx.lifecycle.ViewModel;
 
 import com.cart.shoppingusageapp.model.prod.Object;
-import com.cart.shoppingusageapp.networking.FetchProductListUseCase;
+import com.cart.shoppingusageapp.networking.FetchProductListRepository;
 
 import java.util.HashSet;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.Set;
 
 import javax.inject.Inject;
 
-public class ProductListViewModel extends ViewModel implements FetchProductListUseCase.Listener {
+public class ProductListViewModel extends ViewModel implements FetchProductListRepository.Listener {
 
     public interface Listener {
 
@@ -20,28 +20,28 @@ public class ProductListViewModel extends ViewModel implements FetchProductListU
         void onFetchProductFailAndNotify();
     }
 
-    private FetchProductListUseCase mFetchProductListUseCase;
+    private FetchProductListRepository mFetchProductListRepository;
 
     private Set<Listener> mListeners = new HashSet<>();
 
     @Inject
-    public ProductListViewModel(FetchProductListUseCase fetchProductListUseCase) {
-        mFetchProductListUseCase = fetchProductListUseCase;
+    public ProductListViewModel(FetchProductListRepository fetchProductListRepository) {
+        mFetchProductListRepository = fetchProductListRepository;
     }
 
     public void registerViewModel() {
-        mFetchProductListUseCase.registerListener(this);
+        mFetchProductListRepository.registerListener(this);
     }
 
 
     @Override
     protected void onCleared() {
         super.onCleared();
-        mFetchProductListUseCase.unregisterListener(this);
+        mFetchProductListRepository.unregisterListener(this);
     }
 
     public void fetchProductList() {
-        mFetchProductListUseCase.fetchProductList();
+        mFetchProductListRepository.fetchProductList();
     }
 
     public void registerListener(Listener listener) {
